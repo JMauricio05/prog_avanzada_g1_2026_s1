@@ -6,7 +6,7 @@ abstract class Figura
 
     public function getAreaMsg()
     {
-        return "\nEl area del cuadrado es de " . $this->area();
+        return "\nEl area de la figura es de " . $this->area();
     }
 }
 
@@ -68,6 +68,27 @@ class Rectangulo extends Figura implements IFigura
     }
 }
 
+class Triangulo extends Figura implements IFigura
+{
+    private $base = 0;
+    private $altura = 0;
+
+    public function __construct($base, $altura)
+    {
+        $this->base = $base;
+        $this->altura = $altura;
+    }
+
+    public function area()
+    {
+        return ($this->base * $this->altura) / 2;
+    }
+
+    public function toString(){
+        return "\nEl triangulo es de " . $this->base . "x" . $this->altura;
+    }
+}
+
 
 $cuadrado1 = new Cuadrado(25);
 echo "\nEl cuadrado es de " . $cuadrado1->getArista();
@@ -78,3 +99,8 @@ echo $cuadrado1->getAreaMsg();
 $rectangulo1 = new Rectangulo(10, 15);
 echo $rectangulo1->toString();
 echo $rectangulo1->getAreaMsg();
+
+$triangulo1 = new Triangulo(20, 30);
+echo $triangulo1->toString();
+echo $triangulo1->getAreaMsg();
+

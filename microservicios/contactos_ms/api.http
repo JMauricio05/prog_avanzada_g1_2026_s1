@@ -1,0 +1,15 @@
+### Endpoint Hola mundo
+
+GET http://127.0.0.1:8000
+
+### Probar suma
+GET http://127.0.0.1:8000/suma?num1=100&num2=15
+
+### Probar suma 2
+POST http://127.0.0.1:8000/suma
+Content-Type: application/json
+
+{
+    "num1": 50,
+    "num2": 30
+}

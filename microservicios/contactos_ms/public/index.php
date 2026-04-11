@@ -37,4 +37,22 @@ $app->post('/suma', function (Request $request, Response $response) {
     return $response->withHeader('Content-Type', 'application/json');
 });
 
+$app->post('/dividir', function (Request $request, Response $response) {
+    $body = $request->getBody()->getContents();
+    $data = json_decode($body, true);
+    $num1 = $data['num1'];
+    $num2 = $data['num2'];
+    if ($num2 == 0) {
+        $response->getBody()->write("No se puede dividir por cero");
+        return $response->withStatus(400);
+    }
+    $result = [
+        'num1' => $num1,
+        'num2' => $num2,
+        'resultado' => $num1 / $num2
+    ];
+    $response->getBody()->write(json_encode($result));
+    return $response->withHeader('Content-Type', 'application/json');
+});
+
 $app->run();

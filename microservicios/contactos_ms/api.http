@@ -22,3 +22,16 @@ Content-Type: application/json
     "num1": 300,
     "num2": 10
 }
+
+### consultar contacto
+GET http://127.0.0.1:8000/contactos
+
+### registrar contactos
+POST http://127.0.0.1:8000/contacto
+Content-Type: application/json
+
+{
+    "nombre": "Ana",
+    "email": "ana@test.com",
+    "telefono": "12345"
+}

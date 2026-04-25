@@ -51,3 +51,6 @@ DELETE http://127.0.0.1:8000/contacto/2
 
 ### consultar contacto
 GET http://127.0.0.1:8000/contacto/1
+
+### consultar contactos v2
+GET http://127.0.0.1:8000/contactos-v2

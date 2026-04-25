@@ -45,4 +45,40 @@ class ContactosRepository
                 ->withHeader('Content-Type', 'application/json');
         }
     }
+
+    function update(Request $request, Response $response, $args)
+    {
+        $id = $args['id'];
+        $body = $request->getBody()->getContents();
+        $data = json_decode($body, true);
+        $controller = new ContactosController();
+        $usuario = $controller->modificarContacto($id, $data);
+        $dataResponse = $usuario->toJson();
+        $response->getBody()->write($dataResponse);
+        return $response
+            ->withStatus(200)
+            ->withHeader("Content-Type", 'application/json');
+    }
+
+    function delete(Request $request, Response $response, $args){
+        $id = $args['id'];
+        $controller = new ContactosController();
+        $estado = $controller->borrarContacto($id);
+        $dataResponse = json_encode(['msg'=>'Contacto borrado']);
+        $response->getBody()->write($dataResponse);
+        return $response
+            ->withStatus(200)
+            ->withHeader("Content-Type", 'application/json');
+    }
+
+    function detail(Request $request, Response $response, $args){
+        $id = $args['id'];
+        $controller = new ContactosController();
+        $contacto = $controller->getContacto($id);
+        $dataResponse = $contacto->toJson();
+        $response->getBody()->write($dataResponse);
+        return $response
+            ->withStatus(200)
+            ->withHeader("Content-Type", 'application/json');
+    }
 }

@@ -23,7 +23,7 @@ Content-Type: application/json
     "num2": 10
 }
 
-### consultar contacto
+### consultar contactos
 GET http://127.0.0.1:8000/contactos
 
 ### registrar contactos
@@ -31,7 +31,23 @@ POST http://127.0.0.1:8000/contacto
 Content-Type: application/json
 
 {
-    "nombre": "Ana",
-    "email": "ana@test.com",
+    "nombre": "Juan",
+    "email": "juan@test.com",
     "telefono": "12345"
 }
+
+### modificar contactos
+PUT http://127.0.0.1:8000/contacto/2
+Content-Type: application/json
+
+{
+    "nombre": "Pepe",
+    "email": "arturo@test.com",
+    "telefono": "654321"
+}
+
+### borrar contactos
+DELETE http://127.0.0.1:8000/contacto/2
+
+### consultar contacto
+GET http://127.0.0.1:8000/contacto/1
